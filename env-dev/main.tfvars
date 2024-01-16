@@ -36,3 +36,11 @@ components = {
     tags = { Monitor = "true", env = "dev"}
   }
 }
+
+tags = {
+  company_name = "Vagdevi Tech"
+  business = "Ecommerce"
+  business_unit = "retail"
+  cost_center = "2411"
+  project_name = "Roboshop"
+}
