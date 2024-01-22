@@ -4,5 +4,5 @@
 
 
 output "subnet_ids" {
-  value = module.vpc["subnet"]
+  value = module.vpc["main"]["subnets"]["app"].aws_subnet.main[0]
 }
