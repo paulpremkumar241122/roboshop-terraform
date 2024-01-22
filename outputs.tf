@@ -4,5 +4,5 @@
 
 
 output "subnet_ids" {
-  value = module.vpc["subnet_ids"]["subnet_id"]["app"]["subnet_ids"][0]
+  value = module.vpc["subnet_ids"]["app"]["subnet_ids"][0]
 }
