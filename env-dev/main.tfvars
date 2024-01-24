@@ -59,3 +59,4 @@ vpc = {
 }
 
 default_vpc_id = "vpc-03467d07ad2f770e5"
+default_vpc_rt = "rtb-0caa71941830cf02e"
