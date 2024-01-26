@@ -65,6 +65,8 @@ default_vpc_rt = "rtb-0caa71941830cf02e"
 ### so why we are giving /32 is bacause it is only 1 instance .
 allow_ssh_cidr = ["172.31.39.155/32"]
 
+zone_id = "Z0866621F4YFMPDO5E0L"
+
 
 rabbitmq = {
   main = {
