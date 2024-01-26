@@ -60,3 +60,15 @@ vpc = {
 
 default_vpc_id = "vpc-03467d07ad2f770e5"
 default_vpc_rt = "rtb-0caa71941830cf02e"
+
+### allowing workstaion to access rabbitmq instance  - allow_ssh_cidr = workstaion - ip/32
+### so why we are giving /32 is bacause it is only 1 instance .
+allow_ssh_cidr = ["172.31.39.155/32"]
+
+
+rabbitmq = {
+  main = {
+    instance_type = "t3.small"
+    component = "rabbitmq"
+  }
+}
