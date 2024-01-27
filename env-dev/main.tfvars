@@ -8,6 +8,27 @@ tags = {
   project_name  = "roboshop"
 }
 
+tags = {
+  company_name = "Vagdevi Tech"
+  business = "Ecommerce"
+  business_unit = "retail"
+  cost_center = "2411"
+  project_name = "Roboshop"
+}
+
+vpc = {
+  main = {
+    cidr_block = "10.0.0.0/16"
+    subnets  = {
+      web    = { cidr_block = [ "10.0.0.0/24", "10.0.1.0/24" ] }
+      app    = { cidr_block = [ "10.0.2.0/24", "10.0.3.0/24" ] }
+      db     = { cidr_block = [ "10.0.4.0/24", "10.0.5.0/24" ] }
+      public = { cidr_block = [ "10.0.6.0/24", "10.0.7.0/24" ] }
+
+    }
+  }
+}
+
 default_vpc_id = "vpc-03467d07ad2f770e5"
 default_vpc_rt = "rtb-0caa71941830cf02e"
 
