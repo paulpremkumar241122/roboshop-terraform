@@ -1,5 +1,13 @@
 env = "dev"
 
+tags = {
+  company_name  = "XYZ Tech"
+  business      = "ecommerce"
+  business_unit = "retail"
+  cost_center   = "322"
+  project_name  = "roboshop"
+}
+
 default_vpc_id = "vpc-03467d07ad2f770e5"
 default_vpc_rt = "rtb-0caa71941830cf02e"
 
@@ -26,6 +34,3 @@ rds ={
     database_name           = "Vagdevi"
   }
 }
-
-
-
