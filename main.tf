@@ -41,3 +41,20 @@ module "rabbitmq" {
   env = var.env
   tags = var.tags
 }
+
+
+module "rds" {
+  source = "git::https://github.com/paulpremkumar241122/terraform-module-rds.git"
+
+
+  for_each = var.rds
+  component = each.value["component"]
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  database_name = each.value["database_name"]
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+
+
+  tags = var.tags
+  env = var.env
+}
