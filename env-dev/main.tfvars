@@ -2,21 +2,21 @@ env = "dev"
 
 
 tags = {
-  company_name = "Vagdevi Tech"
-  business = "Ecommerce"
+  company_name  = "Vagdevi Tech"
+  business      = "Ecommerce"
   business_unit = "retail"
-  cost_center = "2411"
-  project_name = "Roboshop"
+  cost_center   = "2411"
+  project_name  = "Roboshop"
 }
 
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
-    subnets  = {
-      web    = { cidr_block = [ "10.0.0.0/24", "10.0.1.0/24" ] }
-      app    = { cidr_block = [ "10.0.2.0/24", "10.0.3.0/24" ] }
-      db     = { cidr_block = [ "10.0.4.0/24", "10.0.5.0/24" ] }
-      public = { cidr_block = [ "10.0.6.0/24", "10.0.7.0/24" ] }
+    subnets    = {
+      web      = { cidr_block = [ "10.0.0.0/24", "10.0.1.0/24" ] }
+      app      = { cidr_block = [ "10.0.2.0/24", "10.0.3.0/24" ] }
+      db       = { cidr_block = [ "10.0.4.0/24", "10.0.5.0/24" ] }
+      public   = { cidr_block = [ "10.0.6.0/24", "10.0.7.0/24" ] }
 
     }
   }
@@ -40,13 +40,36 @@ rabbitmq = {
   }
 }
 
-rds ={
+rds = {
   main = {
-    component               = "mysql"
-    engine                  = "aurora-mysql"
-    engine_version          = "5.7.mysql_aurora.2.11.3"
-    database_name           = "Vagdevi"
-    instance_count          = 1
-    instance_class          = "db.t3.small"
+    component        = "mysql"
+    engine           = "aurora-mysql"
+    engine_version   = "5.7.mysql_aurora.2.11.3"
+    database_name    = "Vagdevi"
+    instance_count   = 1
+    instance_class   = "db.t3.small"
   }
 }
+
+documentdb = {
+  main = {
+    component         = "mongodb"
+    engine            = "docdb"
+    engine_version    = "4.0.0"
+    db_instance_count = 1
+    instance_class    = "db.t3.medium"
+
+  }
+}
+
+elasticache = {
+  main = {
+    component               = "redis"
+    engine                  = "redis"
+    engine_version          = "6.2"
+    replicas_per_node_group = 1
+    num_node_groups         = 1
+    node_type               = "cache.t3.micro"
+  }
+}
+
