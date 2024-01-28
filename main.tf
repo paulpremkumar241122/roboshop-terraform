@@ -104,6 +104,7 @@ module "elasticache" {
   num_node_groups         = each.value["num_node_groups"]
   sg_subnets_cidr         = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
   node_type               = each.value["node_type"]
+  parameter_group_name    = each.value["parameter_group_name"]
 
   tags = var.tags
   env  = var.env
