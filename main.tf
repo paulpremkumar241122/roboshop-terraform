@@ -127,6 +127,4 @@ module "alb" {
 
   tags = var.tags
   env  = var.env
-
-  kms_key_arn = var.kms_key_arn
 }
