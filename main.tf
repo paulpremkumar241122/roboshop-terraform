@@ -122,7 +122,7 @@ module "alb" {
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   port               = each.value["port"]
   sg_subnets_cidr    = each.value["name"] =="public" ? [ "0.0.0.0" ] : local.app_web_subnet_cidr
-  subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
+  subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
 
 
   tags = var.tags
