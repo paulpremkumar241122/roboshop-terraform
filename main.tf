@@ -128,7 +128,7 @@ module "apps" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   component        = each.value["component"]
-  sg_subnets_cidr  = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
+  sg_subnets_cidr  = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
   subnets          = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
   vpc_id           = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   allow_ssh_cidr   = var.allow_ssh_cidr
