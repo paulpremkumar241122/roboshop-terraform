@@ -14,17 +14,7 @@ module "vpc" {
 
 }
 
-#module "app_server" {
-#  source = "git::https://github.com/paulpremkumar241122/terraform-module-app.git"
-#
-#  component   = "test"
-#  subnet_id   = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "app", null), "subnet_ids", null)[0]
-#  vpc_id      = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#
-#  env  = var.env
-#  tags = var.tags
-#}
-#
+
 #module "rabbitmq" {
 #  source = "git::https://github.com/paulpremkumar241122/terraform-module-rabbitmq.git"
 #
@@ -126,4 +116,27 @@ module "alb" {
 
   tags = var.tags
   env  = var.env
+}
+
+module "apps" {
+  source = "git::https://github.com/paulpremkumar241122/terraform-module-app.git"
+
+  for_each         = var.apps
+  app_port         = each.value["app_port"]
+  instance_type    = each.value["instance_type"]
+  desired_capacity = each.value["desired_capacity"]
+  max_size         = each.value["max_size"]
+  min_size         = each.value["min_size"]
+  component        = each.value["component"]
+  sg_subnets_cidr  = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
+  subnets          = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnets_ref"], null), "subnet_ids", null)
+  vpc_id           = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  allow_ssh_cidr   = var.allow_ssh_cidr
+  lb_dns_name      = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
+  listener_arn     = lookup(lookup(module.alb, each.value["lb_ref"], null), "listener_arn", null)
+  lb_rule_priority = each.value["lb_rule_priority"]
+
+  env  = var.env
+  tags = var.tags
+  kms_key_id      = var.kms_key_arn
 }

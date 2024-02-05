@@ -76,17 +76,31 @@ elasticache = {
 
 alb = {
   public = {
-    name = "public"
-    internal = false
+    name               = "public"
+    internal           = false
     load_balancer_type = "application"
-    subnets_ref = "public"
+    subnets_ref        = "public"
 
   }
   private = {
-    name = "private"
-    internal = true
+    name               = "private"
+    internal           = true
     load_balancer_type = "application"
-    subnets_ref = "app"
+    subnets_ref        = "app"
 
+  }
+}
+
+apps = {
+  cart = {
+    component        = "cart"
+    app_port         = 8080
+    instance_type    = "t3.micro"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "app"
+    lb_ref           = "private"
+    lb_rule_priority = 100
   }
 }
