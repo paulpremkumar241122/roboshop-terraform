@@ -13,11 +13,10 @@ vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
     subnets    = {
-      web      = { cidr_block = [ "10.0.0.0/24", "10.0.1.0/24" ] }
-      app      = { cidr_block = [ "10.0.2.0/24", "10.0.3.0/24" ] }
-      db       = { cidr_block = [ "10.0.4.0/24", "10.0.5.0/24" ] }
-      public   = { cidr_block = [ "10.0.6.0/24", "10.0.7.0/24" ] }
-
+      public   = { cidr_block = [ "10.0.0.0/24", "10.0.1.0/24" ] }
+      web      = { cidr_block = [ "10.0.2.0/24", "10.0.3.0/24" ] }
+      app      = { cidr_block = [ "10.0.4.0/24", "10.0.5.0/24" ] }
+      db       = { cidr_block = [ "10.0.6.0/24", "10.0.7.0/24" ] }
     }
   }
 }
@@ -92,15 +91,72 @@ alb = {
 }
 
 apps = {
-  cart = {
-    component        = "cart"
+  frontend = {
+    component        = "frontend"
     app_port         = 8080
-    instance_type    = "t3.micro"
+    instance_type    = "t3.small"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "web"
+    lb_ref           = "public"
+    lb_rule_priority = 100
+  }
+  catalogue = {
+    component        = "catalogue"
+    app_port         = 8080
+    instance_type    = "t3.small"
     desired_capacity = 1
     max_size         = 1
     min_size         = 1
     subnets_ref      = "app"
     lb_ref           = "private"
-    lb_rule_priority = 100
+    lb_rule_priority = 101
+  }
+  cart = {
+    component        = "cart"
+    app_port         = 8080
+    instance_type    = "t3.small"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "app"
+    lb_ref           = "private"
+    lb_rule_priority = 102
+  }
+  user = {
+    component        = "user"
+    app_port         = 8080
+    instance_type    = "t3.small"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "app"
+    lb_ref           = "private"
+    lb_rule_priority = 103
+  }
+  shipping = {
+    component        = "shipping"
+    app_port         = 8080
+    instance_type    = "t3.small"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "app"
+    lb_ref           = "private"
+    lb_rule_priority = 104
+  }
+  payment = {
+    component        = "payment"
+    app_port         = 8080
+    instance_type    = "t3.small"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnets_ref      = "app"
+    lb_ref           = "private"
+    lb_rule_priority = 105
   }
 }
+
+
