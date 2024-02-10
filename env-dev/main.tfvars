@@ -41,7 +41,7 @@ rabbitmq = {
 
 rds = {
   main = {
-    component        = "mysql"
+    component        = "rds"
     engine           = "aurora-mysql"
     engine_version   = "5.7.mysql_aurora.2.11.3"
     database_name    = "Vagdevi"
@@ -52,7 +52,7 @@ rds = {
 
 documentdb = {
   main = {
-    component         = "mongodb"
+    component         = "docdb"
     engine            = "docdb"
     engine_version    = "4.0.0"
     db_instance_count = 1
@@ -63,7 +63,7 @@ documentdb = {
 
 elasticache = {
   main = {
-    component               = "redis"
+    component               = "elasticache"
     engine                  = "redis"
     engine_version          = "6.x"
     replicas_per_node_group = 1
