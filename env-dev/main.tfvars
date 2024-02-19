@@ -147,6 +147,7 @@ apps = {
     subnets_ref      = "app"
     lb_ref           = "private"
     lb_rule_priority = 104
+    database_iam_permission = [ "arn:aws:ssm:us-east-1:461355683695:parameter/roboshop.dev.mysql.*" ]
   }
   payment = {
     component        = "payment"
