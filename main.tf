@@ -139,4 +139,5 @@ module "apps" {
   env  = var.env
   tags = var.tags
   kms_arn      = var.kms_key_arn
+  kms_key_id   = var.kms_key_arn
 }
