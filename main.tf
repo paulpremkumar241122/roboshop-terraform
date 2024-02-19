@@ -135,6 +135,7 @@ module "apps" {
   lb_dns_name      = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
   listener_arn     = lookup(lookup(module.alb, each.value["lb_ref"], null), "listener_arn", null)
   lb_rule_priority = each.value["lb_rule_priority"]
+  database_iam_permission = try(each.value [ "database_iam_permission" ], [])
 
   env  = var.env
   tags = var.tags
