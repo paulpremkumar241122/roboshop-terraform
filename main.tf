@@ -119,6 +119,9 @@ module "alb" {
 }
 
 module "apps" {
+
+  depends_on = [module.vpc, module.rabbitmq, module.documentdb, module.elasticache, module.rds, module.alb]
+
   source = "git::https://github.com/paulpremkumar241122/terraform-module-app.git"
 
   for_each         = var.apps
