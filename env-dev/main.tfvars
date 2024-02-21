@@ -27,8 +27,8 @@ default_vpc_rt = "rtb-0caa71941830cf02e"
 ### allowing workstaion to access rabbitmq instance  - allow_ssh_cidr = workstaion - ip/32
 ### so why we are giving /32 is bacause it is only 1 instance .
 allow_ssh_cidr        = [ "172.31.39.155/32" ]
-allow_prometheus_cidr = [ "172.31.41.212/32" ]
-#add grafana if required
+allow_prometheus_cidr = [ "172.31.41.212/32", "172.31.37.48/32" ]
+#added grafana ip also in prometheus.
 zone_id               = "Z0866621F4YFMPDO5E0L"
 kms_key_id            = "5ccefc9a-0cc1-49a5-a6b0-4ed8e995551c"
 kms_key_arn           = "arn:aws:kms:us-east-1:461355683695:key/5ccefc9a-0cc1-49a5-a6b0-4ed8e995551c"
