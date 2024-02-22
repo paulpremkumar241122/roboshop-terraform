@@ -113,7 +113,7 @@ apps = {
     min_size         = 1
     subnets_ref      = "app"
     lb_ref           = "private"
-    lb_rule_priority = 101
+    lb_rule_priority = 102
     database_iam_permission = [ "arn:aws:ssm:us-east-1:461355683695:parameter/roboshop.dev.docdb.*" ]
   }
   cart = {
@@ -125,7 +125,7 @@ apps = {
     min_size         = 1
     subnets_ref      = "app"
     lb_ref           = "private"
-    lb_rule_priority = 102
+    lb_rule_priority = 103
   }
   user = {
     component        = "user"
@@ -136,7 +136,7 @@ apps = {
     min_size         = 1
     subnets_ref      = "app"
     lb_ref           = "private"
-    lb_rule_priority = 103
+    lb_rule_priority = 100
     database_iam_permission = [ "arn:aws:ssm:us-east-1:461355683695:parameter/roboshop.dev.docdb.*" ]
   }
   shipping = {

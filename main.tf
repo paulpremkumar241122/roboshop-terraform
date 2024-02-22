@@ -120,7 +120,7 @@ module "alb" {
 
 module "apps" {
 
-  depends_on = [module.vpc, module.rabbitmq, module.documentdb, module.elasticache, module.alb, module.rds]
+  depends_on = [module.vpc, module.alb, module.rds, module.documentdb, module.elasticache, module.rabbitmq]
 
   source = "git::https://github.com/paulpremkumar241122/terraform-module-app.git"
 
